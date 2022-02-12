@@ -3,7 +3,7 @@
 - Keyboard Hero is a Software made with basic languages such as HTML5, CSS3 and Javascript.
 - This program can Run `online` or `offline`
 ---
-### 🔗 Link: https://rededge967.github.io/Keyboard-Hero
+### 🔗 Link: https://fabienbounoir.github.io/Keyboard-Hero-Azerty/
 ---
 ## Preview
 ![Keyboard Hero preview](https://media.discordapp.net/attachments/893984419143090176/942132397913309246/unknown.png)
