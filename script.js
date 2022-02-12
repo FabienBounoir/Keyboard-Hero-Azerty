@@ -25,15 +25,31 @@ function getTimestamp() {
 }
 
 document.addEventListener("keyup", event => {
-  const keyPressed = String.fromCharCode(event.keyCode);
-  const keyElement = document.getElementById(keyPressed);
+  // console.log(event.key);
+  const keyPressed = event.key.toUpperCase();
+
+  console.log(keyPressed);
   const highlightedKey = document.querySelector(".selected");
-  
-  keyElement.classList.add("hit")
-  keyElement.addEventListener('animationend', () => {
-    keyElement.classList.remove("hit")
-  })
-  
+
+  if(!["SHIFT", "ENTER"].includes(keyPressed)) {
+    const keyElement = document.getElementById(keyPressed);
+    keyElement.classList.add("hit")
+    keyElement.addEventListener('animationend', () => {
+      keyElement.classList.remove("hit")
+    })
+  }
+  else
+  {
+    const keyElements = document.querySelectorAll("#"+keyPressed);
+    for(let keyElement of keyElements)
+    {    
+      keyElement.classList.add("hit")
+      keyElement.addEventListener('animationend', () => {
+        keyElement.classList.remove("hit")
+      })
+    }
+  }
+
   if (keyPressed === highlightedKey.innerHTML) {
     timestamps.unshift(getTimestamp());
     const elapsedTime = timestamps[0] - timestamps[1];
@@ -41,6 +57,14 @@ document.addEventListener("keyup", event => {
     highlightedKey.classList.remove("selected");
     targetRandomKey();
   } 
+  else{
+    const body = document.getElementsByTagName("body")[0]
+    console.log(body);
+    body.classList.add("wrong");
+    body.addEventListener('animationend', () => {
+      body.classList.remove("wrong");
+    })
+  }
 })
 
 targetRandomKey();
